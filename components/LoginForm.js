@@ -1,28 +1,24 @@
-import React, { useState, useCallback } from "react";
-import { Form,Button,Input } from "antd";
-import Link from "next/link";
-import styled from "styled-components";
+import React, { useCallback } from 'react';
+import { Form, Button, Input } from 'antd';
+import Link from 'next/link';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import useInput from '../hooks/useInput';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../reducers';
 
 const LoginForm = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const [id, onChangeId] = useInput('');
+  const [password, onChangePassword] = useInput('');
 
-  const onChangeId = useCallback(
-    (e) => {
-      setId(e.target.value);
-    },
-    [id]
-  );
-
-  const onChangePassword = useCallback(
-    (e) => {
-      setPassword(e.target.value);
-    },
-    [password]
-  );
+  const onSubmitForm = useCallback(() => {
+    console.log(id, password);
+    dispatch(loginAction(true));
+  }, [id, password]);
 
   return (
-    <Form>
+    <FormWrapper onFinish={onSubmitForm}>
       <div>
         <label htmlFor="user-id">아이디</label>
         <br />
@@ -31,12 +27,7 @@ const LoginForm = () => {
       <div>
         <label htmlFor="user-password">패스워드</label>
         <br />
-        <Input
-          name="user-password"
-          value={password}
-          onChange={onChangePassword}
-          required
-        />
+        <Input name="user-password" value={password} onChange={onChangePassword} required type="password" />
       </div>
       <ButtonWrapper>
         <Button type="primary" htmlType="submit" loading={false}>
@@ -48,12 +39,20 @@ const LoginForm = () => {
           </a>
         </Link>
       </ButtonWrapper>
-    </Form>
+    </FormWrapper>
   );
+};
+
+LoginForm.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
 
 const ButtonWrapper = styled.div`
-  margin-top : 10px;
-`
+  margin-top: 10px;
+`;
+
+const FormWrapper = styled(Form)`
+  padding: 10px;
+`;

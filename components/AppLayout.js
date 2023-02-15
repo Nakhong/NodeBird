@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { Menu, Input, Row, Col } from "antd";
-import PropTypes from "prop-types";
-import LoginForm from "./LoginForm"
-import UserProfile from "./UserProfile"
-import styled from "styled-components";
+import React from 'react';
+import Link from 'next/link';
+import { Menu, Input, Row, Col } from 'antd';
+import PropTypes from 'prop-types';
+import LoginForm from './LoginForm';
+import UserProfile from './UserProfile';
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const AppLayout = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   return (
     <div>
@@ -39,11 +40,7 @@ const AppLayout = ({ children }) => {
           {children}
         </Col>
         <Col xs={24} md={6}>
-          <a
-            href="https://velog.io/@ghdghkwo5"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <a href="https://velog.io/@ghdghkwo5" target="_blank" rel="noreferrer noopener">
             Made by Hwanak Hong
           </a>
         </Col>
@@ -51,6 +48,7 @@ const AppLayout = ({ children }) => {
     </div>
   );
 };
+
 AppLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
@@ -58,5 +56,5 @@ AppLayout.propTypes = {
 export default AppLayout;
 
 const SearchInput = styled(Input.Search)`
-  vertical-align:middle;
-`
+  vertical-align: middle;
+`;
