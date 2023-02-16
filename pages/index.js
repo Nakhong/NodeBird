@@ -1,14 +1,20 @@
-import React from "react";
-import Head from "next/head";
-import AppLayout from "../components/AppLayout";
+import React from 'react';
+import AppLayout from '../components/AppLayout';
+import { useSelector } from 'react-redux';
 
-const Home = () => (
-  <AppLayout>
-    <Head>
-      <title>NodeBird</title>
-    </Head>
-    <div>Hello, Next!</div>
-  </AppLayout>
-);
+import PostForm from '../components/PostForm';
+import PostCard from '../components/PostCard';
 
+const Home = () => {
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const { mainPosts } = useSelector((state) => state.post);
+  return (
+    <AppLayout>
+      {isLoggedIn && <PostForm />}
+      {mainPosts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </AppLayout>
+  );
+};
 export default Home;

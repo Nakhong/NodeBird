@@ -2,7 +2,7 @@ export const initialState = {
   mainPosts: [
     {
       id: 1,
-      User: {
+      User: { //시퀄라이즈
         id: 1,
         nickname: '제로초',
       },
@@ -35,11 +35,10 @@ export const initialState = {
     },
   ],
   imagePaths: [],
-  postAdded: false,
+  postAdded: false, //게시글 추가 되면 추가
 };
 
-const ADD_POST = 'ADD_POST';
-
+const ADD_POST = 'ADD_POST'; //게시글 추가하는 액션 변수로 빼주는게 좋음 휴먼에러 방지
 export const addPost = {
   type: ADD_POST,
 };
@@ -60,7 +59,7 @@ export default (state = initialState, action) => {
     case ADD_POST: {
       return {
         ...state,
-        mainPosts: [dummyPost, ...state.mainPosts],
+        mainPosts: [dummyPost, ...state.mainPosts], //앞에다가 추가하셔야함. 아니면 맨 밑으로 내려감
         postAdded: true,
       };
     }
@@ -71,3 +70,5 @@ export default (state = initialState, action) => {
     }
   }
 };
+
+// 데이터를 구성하고 액션 구성 => 화면 구성

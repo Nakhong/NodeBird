@@ -10,6 +10,7 @@ const UserProfile = () => {
   const onLogOut = useCallback(() => {
     dispatch(logoutAction(false));
   });
+
   return (
     <Card
       actions={[
