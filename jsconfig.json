@@ -3,5 +3,5 @@
     "module": "commonjs",
     "target": "es6"
   },
-  "exclude": ["node_modules", ".next"]
+  "exclude": ["node_modules", ".next", "storybook", "coverage", "storybook-static"]
 }

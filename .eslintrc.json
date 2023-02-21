@@ -10,8 +10,8 @@
     "browser": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["import", "react-hooks"],
+  "extends": ["eslint:recommended", "prettier", "plugin:react/recommended", "plugin:prettier/recommended"],
+  "plugins": ["import", "react-hooks", "prettier"],
   "rules": {
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off"
