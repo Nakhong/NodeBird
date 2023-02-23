@@ -14,7 +14,7 @@
 ### 2. 프로젝트 기술스택
 
 프레임워크 : Next.js  
-라이브러리 : axios, antd, styled-components, Redux,Redux-saga
+라이브러리 : axios, antd, styled-components, Redux,Redux-saga,React-slick
 
 ### 3.실행 방법
 
