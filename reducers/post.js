@@ -2,11 +2,11 @@ export const initialState = {
   mainPosts: [
     {
       id: 1,
-      User: { //시퀄라이즈
+      User: {
         id: 1,
         nickname: '제로초',
       },
-      content: '첫 번째 게시글',
+      content: '첫 번째 게시글 #해시태그 #익스프레스',
       Images: [
         {
           src: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
@@ -37,7 +37,7 @@ export const initialState = {
   imagePaths: [],
   postAdded: false, //게시글 추가 되면 추가
 };
-
+// 시퀄라이즈에서 어떤 정보와 다른 정보가 있으면 합쳐줌 합친건 대문자로 나옴
 const ADD_POST = 'ADD_POST'; //게시글 추가하는 액션 변수로 빼주는게 좋음 휴먼에러 방지
 export const addPost = {
   type: ADD_POST,
